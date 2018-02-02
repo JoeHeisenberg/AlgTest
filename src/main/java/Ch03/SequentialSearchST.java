@@ -40,7 +40,7 @@ public class SequentialSearchST<Key, Value> {
     private Node first;      // the linked list of key-value pairs
 
     // a helper linked list data type
-    private class Node {
+    public class Node {
         private Key key;
         private Value val;
         private Node next;
