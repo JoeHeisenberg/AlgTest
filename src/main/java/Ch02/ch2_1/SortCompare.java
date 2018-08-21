@@ -57,9 +57,9 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        String alg1 = "Quick3way";
-        String alg2 = "Merge";
-        int n = Integer.parseInt("10000");
+        String alg1 = "Quick";
+        String alg2 = "Heap";
+        int n = Integer.parseInt("1000");
         int trials = Integer.parseInt("100");
         double time1, time2;
         if (args.length == 5 && args[4].equals("sorted")) {
