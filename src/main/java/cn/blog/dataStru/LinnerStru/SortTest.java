@@ -1,4 +1,8 @@
-package cn.blog.dataStru;
+package cn.blog.dataStru.LinnerStru;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * create by Heisenberg
@@ -30,8 +34,8 @@ public class SortTest {
     }
 
     /**
+     * Bubble Sort
      * 特点：相邻两两依次比较交换，遍历；O（n*n）
-     *
      * @param arr
      * @return
      */
@@ -40,16 +44,7 @@ public class SortTest {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
-//                    swap(arr[j], arr[j + 1]);
-
-                    //由于浮点数运算，导致结果精度问题
-//                    arr[j] = arr[j] + arr[j + 1];
-//                    arr[j + 1] = arr[j] - arr[j + 1];
-//                    arr[j] = arr[j] - arr[j + 1];
-
-                    double temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                    swap(arr, j, j + 1);
                 }
 
             }
@@ -61,10 +56,7 @@ public class SortTest {
 //        for (index_out = arr.length - 1; index_out > 0; index_out--) {
 //            for (index_in = 0; index_in < index_out; index_in++) {
 //                if (arr[index_in] > arr[index_in + 1]) {
-////                    swap(index_in, (index_in + 1));
-////                    arr[index_in] = arr[index_in] + arr[index_in + 1];
-////                    arr[index_in + 1] = arr[index_in] - arr[index_in + 1];
-////                    arr[index_in] = arr[index_in] - arr[index_in + 1];
+//                    swap(arr, index_in, index_in + 1);
 //                }
 //            }
 //        }
@@ -73,9 +65,9 @@ public class SortTest {
     }
 
     /**
+     * Selection Sort
      * 特点：两两比较（不一定相邻），记录最小值角标，最终进行交换，部分遍历；O（n）+O（n*n）；
      * 降低了交换次数
-     *
      * @param arr
      * @return
      */
@@ -88,17 +80,15 @@ public class SortTest {
                     min = j + 1;
                 }
             }
-            double temp = arr[i];
-            arr[i] = arr[min];
-            arr[min] = temp;
+            swap(arr, i, min);
         }
         return arr;
     }
 
     /**
+     * Insertion Sort
      * 特点：基于数组元素部分有序的假设，记录当前要插入元素的角标和值，进行前向遍历比较（不一定全部遍历）、移动，插入；
      * 减少了比较次数和交换次数
-     *
      * @param arr
      * @return
      */
@@ -108,10 +98,7 @@ public class SortTest {
             int fore = i;
             double temp = arr[i];
 
-            for (int j = i; j > 0; j--) {
-                if (temp > arr[j - 1]) {
-                    break;
-                }
+            for (int j = i; j > 0 && temp <= arr[j - 1]; j--) {
                 arr[j] = arr[j - 1];
                 fore--;
             }
@@ -131,6 +118,43 @@ public class SortTest {
         return arr;
     }
 
+    /**
+     * Shell Sort
+     * 特点：
+     * @param arr
+     * @return
+     */
+    public double[] shellSort(double[] arr) {
+
+
+        return arr;
+    }
+
+    /**
+     * Merge Sort
+     * 特点：
+     * @param arr
+     * @return
+     */
+    public double[] mergeSort(double[] arr){
+
+        List list = new LinkedList();
+        List list1 = new ArrayList(list);
+
+        return arr;
+    }
+
+    /**
+     * Quick Sort
+     * 特点：
+     * @param arr
+     */
+    public double[] quickSort(double[] arr){
+
+
+        return arr;
+    }
+
 
     private void printArr(double[] arr) {
         for (double d : arr
@@ -139,18 +163,15 @@ public class SortTest {
         }
     }
 
-//    private void swap(double v, double v1) {
-//        System.out.println(v + "," + v1);
-//
-//        double temp = v;
-//        v = v1;
-//        v1 = temp;
-//
-//        v = v + v1;
-//        v1 = v - v1;
-//        v = v - v1;
-//        System.out.println(v + "," + v1);
-//    }
+    private void swap(double[] arr, int v, int v1) {
+        double temp = arr[v];
+        arr[v] = arr[v1];
+        arr[v1] = temp;
+
+//        arr[v] = arr[v] + arr[v1];
+//        arr[v1] = arr[v] - arr[v1];
+//        arr[v] = arr[v] - arr[v1];
+    }
 
     public static void main(String[] args) {
 
