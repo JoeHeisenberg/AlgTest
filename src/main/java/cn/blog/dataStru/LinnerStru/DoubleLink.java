@@ -20,6 +20,7 @@ public class DoubleLink<T> {
         public DNode next;
         public T value;
 
+        //***节点初始化指针指向，指出！！（-->;-->）
         public DNode(T value, DNode prev, DNode next) {
             this.value = value;
             this.prev = prev;

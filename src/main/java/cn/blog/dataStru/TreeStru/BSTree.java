@@ -14,7 +14,7 @@ public class BSTree<T extends Comparable<T>> {
 
     private BSTNode<T> mRoot;    // 根结点
 
-    public class BSTNode<T extends Comparable<T>> {
+    private class BSTNode<T extends Comparable<T>> {
         T key;                // 关键字(键值)
         BSTNode<T> left;    // 左孩子
         BSTNode<T> right;    // 右孩子
@@ -27,7 +27,7 @@ public class BSTree<T extends Comparable<T>> {
             this.right = right;
         }
 
-        public T getKey() {
+        private T getKey() {
             return key;
         }
 
@@ -169,7 +169,7 @@ public class BSTree<T extends Comparable<T>> {
         return null;
     }
 
-    //    二叉树的节点val值是按照二叉树中序遍历顺序连续设定。
+    //    二叉树的节点val值是按照二叉树中序遍历顺序连续设定。(前驱、后继的设定)
 
     /**
      * 找结点(x)的前驱结点。即，查找"二叉树中数据值小于该结点"的"最大结点"。
@@ -178,7 +178,7 @@ public class BSTree<T extends Comparable<T>> {
      * 若一个节点没有左子树，那么判断该节点和其父节点的关系
      * 1. 若该节点是其父节点的右边孩子，那么该节点的前驱结点即为其父节点。
      * 2. 若该节点是其父节点的左边孩子，那么需要沿着其父亲节点一直向树的顶端寻找，
-     * 直到找到一个节点P，P节点是其父节点Q的右边孩子（可参考例子2的前驱结点是1），那么Q就是该节点的后继节点
+     *    直到找到一个节点P，P节点是其父节点Q的右边孩子（可参考例子2的前驱结点是1），那么Q就是该节点的后继节点
      */
     public BSTNode<T> predecessor(BSTNode<T> x) {
         //0.
@@ -197,12 +197,13 @@ public class BSTree<T extends Comparable<T>> {
     }
 
     /**
+     * 找结点(x)的后继结点。即，查找"二叉树中数据值大于该结点"的"最小结点"。
      * 0.若一个节点有右子树，那么该节点的后继节点是其右子树中val值最小的节点（也就是右子树中所谓的leftMostNode）
      *
      * 若一个节点没有右子树，那么判断该节点和其父节点的关系
      * 1. 若该节点是其父节点的左边孩子，那么该节点的后继结点即为其父节点
      * 2. 若该节点是其父节点的右边孩子，那么需要沿着其父亲节点一直向树的顶端寻找，
-     * 直到找到一个节点P，P节点是其父节点Q的左边孩子（可参考例子2的前驱结点是1），那么Q就是该节点的后继节点
+     *    直到找到一个节点P，P节点是其父节点Q的左边孩子（可参考例子2的前驱结点是1），那么Q就是该节点的后继节点
      */
     public BSTNode<T> successor(BSTNode<T> x) {
         // 0.
@@ -317,7 +318,7 @@ public class BSTree<T extends Comparable<T>> {
     public void remove(T key) {
         BSTNode<T> z, node;
 
-        if ((z = search(mRoot, key)) != null)
+        if ((z = search(key)) != null)
             if ((node = remove(this, z)) != null)
                 node = null;
     }
